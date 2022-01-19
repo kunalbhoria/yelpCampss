@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
@@ -9,7 +10,7 @@ const flash = require('connect-flash');
 const Joi = require('joi');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-require('dotenv').config();
+const MongoStore = require("connect-mongo");
 const MONGODB_URL = process.env.MONGODB_URL ||'mongodb://localhost:27017/camps'
 
 
@@ -36,11 +37,16 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static('static'))
 
 const sessionConfig = {
-    secret: 'thisshouldbeabettersecret!',
+    store: MongoStore.create({
+        mongoUrl: MONGODB_URL,
+      }),
+    name: 'session',
+    secret:process.env.S_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
