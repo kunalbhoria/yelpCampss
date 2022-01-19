@@ -1,0 +1,73 @@
+<% layout("layout/biolerplate") %> 
+<div class="row">
+    <div class="col-6 offset-3">
+        <%- include('../partials/flash') %>
+        <form action="/campground/<%=camp._id%>?_method=PUT"" method="POST" novalidate >
+        <!-- <form action="/campground/<%=camp._id%>?_method=PUT"" method="POST" novalidate class="need-validation"> -->
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="title" name="campground[title]" placeholder="value" value="<%= camp.title %> "
+                    required>
+                <label for="title">Title</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a title.
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="location" name="campground[location]" value="<%= camp.location %>"
+                    placeholder="value" required>
+                <label for="location">Location</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a location.
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="image" name="campground[image]" placeholder="value" value="<%= camp.image %>"
+                    required>
+                <label for="image">Image</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a image url.
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text ">$</span>
+                <div class="form-floating flex-grow-1">
+                    <input type="number" class="form-control " id="price" name="campground[price]" value="<%= camp.price %>"
+                    placeholder="value" required min="0">
+                <label  for="price">Price</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter the price.
+                </div>
+                </div>
+                
+            </div>
+            <div class=" form-floating mb-3">
+                <textarea class="form-control h-25" class="form-control" id="description" rows="5"
+                    name="campground[description]" placeholder="value" required><%= camp.description %></textarea>
+                <label for="description" class="form-label">Description</label>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please write description.
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <button class="btn btn-primary btn-sm col-3 offset-2" type="submit">Edit Campground</button>
+                <button class="btn  btn-outline-info btn-sm col-2 offset-2" type="reset">Reset</button>
+            </div>
+
+        </form>
+    </div>
+</div>

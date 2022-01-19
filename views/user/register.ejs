@@ -1,0 +1,49 @@
+<% layout("layout/biolerplate") %>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <%- include('../partials/flash') %>
+        <!-- <form action="/campground" method="POST" novalidate class="need-validation"> -->
+            <form action="/register" method="POST" novalidate >
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="value"
+                        required>
+                    <label for="Email">Email</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a email.
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="username" name="username"
+                        placeholder="value" required>
+                    <label for="username">Username</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a username.
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="value"
+                        required>
+                    <label for="password">Password</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a password.
+                    </div>
+                </div>
+               
+                <div class="mb-3 row">
+                    <button class="btn btn-primary btn-sm col-3 offset-2" type="submit">Register</button>
+                    <button class="btn  btn-outline-info btn-sm col-2 offset-2" type="reset">Reset</button>
+                </div>
+
+            </form>
+    </div>
+</div>

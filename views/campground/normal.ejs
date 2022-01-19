@@ -1,0 +1,39 @@
+<% layout("layout/biolerplate") %>
+
+  <div class="container">
+    <%- include('../partials/flash') %>
+    <h1 class="col-9 offset-2 text-center">All campgrounds</h1>
+    <div class="row">
+      <% for(let camps of campgrounds){ %>
+        <div class="col-l offset-1  mb-3 ">
+          <div class="row align-items-center">
+            <div class=" col-l-4  ">
+              <img src="<%= camps.image %>/400x300 " class="img-fluid rounded-start "  alt="...">
+            </div>
+            <div class="col-8">
+              <div class="">
+                <h5 class="card-title">
+                  <%= camps.title %>
+                </h5>
+                <h6 class="card-title text-muted">
+                  <%= camps.location %>
+                </h6>
+                <p class="card-title">$<%= camps.price %>
+                </p>
+                <p class="card-text">
+                  <%= camps.description %>
+                </p>
+                <a href="/campground/edit/<%= camps._id %>" class="btn btn-primary">Edit</a>
+                
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      <% } %>
+    </div>
+
+
+  </div>
