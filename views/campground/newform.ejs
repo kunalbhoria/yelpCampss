@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-6 offset-3">
             <%- include('../partials/flash') %>
-            <form action="/campground" method="POST" novalidate class="need-validation">
+            <form action="/campground" method="POST" enctype="multipart/form-data" novalidate class="need-validation">
             <!-- <form action="/campground" method="POST" novalidate > -->
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="title" name="campground[title]" placeholder="value"
@@ -27,15 +27,10 @@
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="image" name="campground[image]" placeholder="value"
-                        required>
-                    <label for="image">Image</label>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter a image url.
-                    </div>
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Add images</label>
+                        <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+                      </div>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text ">$</span>

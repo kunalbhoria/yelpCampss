@@ -14,6 +14,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const MongoStore = require('connect-mongo');
 const MONGODB_URL = process.env.MONGODB_URL ||'mongodb://localhost:27017/camps'
+// const MONGODB_URL ='mongodb://localhost:27017/camps'
 
 
 const Campground = require('./modules/campground');
@@ -77,7 +78,8 @@ const loginRoutes = require('./routes/login')
 
 app.use((req, res, next) => {
    // console.log(req.session)
-    console.log(`current user ${req.user}`)
+    // console.log(`current user ${req.user}`)
+    console.log(req.originalUrl)
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
@@ -85,7 +87,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.redirect('/campgrounds');
+    res.render('home')
 })
 
 app.get('/campgrounds',catchAsync(async (req, res) => {

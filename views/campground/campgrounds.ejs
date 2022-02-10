@@ -1,14 +1,18 @@
 <% layout("layout/biolerplate") %>
-
-  <div class="container">
-    <%- include('../partials/flash') %>
+<div class="container">
+  <%- include('../partials/flash') %>
+  <div id="cluster-map"></div>
     <h1 class="col-9 offset-2 text-center">All campgrounds</h1>
     <div class="row">
       <% for(let camps of campgrounds){ %>
         <div class="col-10 offset-1  mb-3 card">
           <div class="row align-items-center">
             <div class=" col-4  ">
-              <img src="<%= camps.image %>/400x300 " class="img-fluid rounded-start "  alt="...">
+              <%if(camps.image.length) { %>
+                <img class="img-fluid" alt="" src="<%=camps.image[0].url%>">
+                <% }else {const sample = array => array[Math.floor(Math.random() * array.length)] ;const imgId = [4651015,1273441,24511415,3133499]%>
+                <img class="img-fluid" src=<%= `https://source.unsplash.com/collection/${sample(imgId)}/400x300 ` %>  alt="">
+                <% } %>
             </div>
             <div class="col-8">
               <div class="card-body">
@@ -37,6 +41,13 @@
 
 
   </div>
+
+  <script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    const campgrounds = { features: <%- JSON.stringify(campgrounds) %>}
+</script>
+
+<script src="/javascripts/clusterMap.js"></script>
 
 
     
